@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "test.h"//replit에서의 사용자 정의 헤더
 void clear();
 double culc();
 /*
@@ -14,6 +15,7 @@ int main(void) {
   double p,i;
   int n;
   clear();
+  test();
   printf("##------------------------------##\n");
   printf("##----------복리계산기----------##\n");
   printf("##------------------------------##\n");
