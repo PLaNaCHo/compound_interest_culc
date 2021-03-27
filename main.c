@@ -8,29 +8,52 @@ double culc();
 원금, 이자율, 횟수를 넣고 이자금을 출력
 log를 남겨서 각 횟수마다 [단일 이자],[이자의 합],[원금+총이자]출력
 +숫자에 쉼표 찍기
+뒤가 0인 소수점 버리기
+버튼 누르면 횟수 즉시 한번 추가해서 출력
 
 */
 
 int main(void) {
+  for (int loop=1;loop ==1;){//다시하기용 전체 루프
   double p,i;
   int n;
+  char loop_yn;
   clear();
   test();
+
   printf("##------------------------------##\n");
   printf("##----------복리계산기----------##\n");
   printf("##------------------------------##\n");
   printf("> 원금을 입력하십시오\n");
-  scanf("%lf", &p);
+  scanf("%lf", &p);//double형 입력에는 lf씀
   printf("> 이자율을 입력하십시오(%로)\n");
   scanf("%lf", &i);
   printf("> 이자가 붙는 횟수(기간)를 입력하십시오(정수로)\n");
   scanf("%d", &n);
   culc(p, i/100, n);
+  printf("> 다시 시작하려면 y, 끝내려면 n을 입력하십시오\n");
+
+  for (;loop_yn!='y'&&loop_yn!='n';){//다시하기 선택
+    scanf("%c", &loop_yn);
+    if (loop_yn=='y'){
+      loop=1;
+    }
+    else if (loop_yn=='n'){
+      loop=0;
+      clear();
+    }
+    else {
+    printf("y 또는 n을 입력해 주십시오\n");
+    loop='x';
+    }
+  }
+  loop_yn='x';
+  }
   return 0;
 }
 
 double culc(double principal, double per, int num){
-  double log[3][20];
+  double log[3][100];
   double PnI;
   log[0][0] = per*principal;//단일 이자
   log[1][0] = 0;//이자 총합
